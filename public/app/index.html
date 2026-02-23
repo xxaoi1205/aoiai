@@ -146,7 +146,7 @@ body::before {
 }
 .style-chip:hover { border-color: var(--border-bright); color: var(--white); }
 .style-chip.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.06); }
-.style-chip .style-emoji { font-size: 14px; display: block; margin-bottom: 3px; }
+
 
 /* Sliders & controls */
 .control-row { margin-bottom: 14px; }
@@ -664,52 +664,52 @@ body::before {
       <div class="sidebar-label">スタイル</div>
       <div class="style-grid" id="styleGrid">
         <div class="style-chip active" data-style="realistic">
-          <span class="style-emoji">🎬</span>リアル
+          リアル
         </div>
         <div class="style-chip" data-style="anime">
-          <span class="style-emoji">✨</span>アニメ
+          アニメ
         </div>
         <div class="style-chip" data-style="manga">
-          <span class="style-emoji">📖</span>マンガ
+          マンガ
         </div>
         <div class="style-chip" data-style="cinematic">
-          <span class="style-emoji">🎥</span>シネマ
+          シネマ
         </div>
         <div class="style-chip" data-style="3d">
-          <span class="style-emoji">💎</span>3D
+          3D
         </div>
         <div class="style-chip" data-style="abstract">
-          <span class="style-emoji">🌀</span>抽象
+          抽象
         </div>
         <div class="style-chip" data-style="watercolor">
-          <span class="style-emoji">🖌️</span>水彩画
+          水彩画
         </div>
         <div class="style-chip" data-style="neon">
-          <span class="style-emoji">💜</span>ネオン
+          ネオン
         </div>
         <div class="style-chip" data-style="vintage">
-          <span class="style-emoji">📷</span>ヴィンテージ
+          ヴィンテージ
         </div>
         <div class="style-chip" data-style="minimalist">
-          <span class="style-emoji">⬜</span>ミニマル
+          ミニマル
         </div>
         <div class="style-chip" data-style="horror">
-          <span class="style-emoji">👁️</span>ホラー
+          ホラー
         </div>
         <div class="style-chip" data-style="fantasy">
-          <span class="style-emoji">🗡️</span>ファンタジー
+          ファンタジー
         </div>
         <div class="style-chip" data-style="cyberpunk">
-          <span class="style-emoji">🤖</span>サイバーパンク
+          サイバーパンク
         </div>
         <div class="style-chip" data-style="studio_ghibli">
-          <span class="style-emoji">🌿</span>ジブリ風
+          ジブリ風
         </div>
         <div class="style-chip" data-style="pixel">
-          <span class="style-emoji">🕹️</span>ピクセル
+          ピクセル
         </div>
         <div class="style-chip" data-style="lofi">
-          <span class="style-emoji">☁️</span>Lo-Fi
+          Lo-Fi
         </div>
       </div>
     </div>
@@ -769,11 +769,71 @@ body::before {
           <div class="check-box"></div>
           <span class="audio-option-text">🔊 環境音・効果音</span>
         </div>
-        <div class="audio-option" data-audio="voice">
+        <div class="audio-option" data-audio="voice" id="voiceToggle">
           <div class="check-box"></div>
           <span class="audio-option-text">🎤 ナレーション（日本語）</span>
         </div>
       </div>
+
+      <!-- 声色設定（ナレーションON時に表示） -->
+      <div id="voiceSettings" style="display:none; margin-top:12px;">
+        <div class="sidebar-label" style="margin-bottom:10px;">声色・トーン</div>
+        <div class="style-grid" id="voiceToneGrid">
+          <div class="style-chip active" data-tone="female_soft">
+            女性・柔らか
+          </div>
+          <div class="style-chip" data-tone="female_cool">
+            女性・クール
+          </div>
+          <div class="style-chip" data-tone="male_warm">
+            男性・温かい
+          </div>
+          <div class="style-chip" data-tone="male_deep">
+            男性・低音
+          </div>
+          <div class="style-chip" data-tone="child">
+            子供っぽい
+          </div>
+          <div class="style-chip" data-tone="elderly">
+            年配・落ち着き
+          </div>
+          <div class="style-chip" data-tone="energetic">
+            元気・活発
+          </div>
+          <div class="style-chip" data-tone="whisper">
+            ささやき声
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="control-label" style="margin-bottom:7px;">話す速さ <span id="speechRateVal">普通</span></div>
+          <input type="range" class="slider" id="speechRateSlider" min="0.5" max="2.0" value="1.0" step="0.1">
+          <div style="display:flex;justify-content:space-between;margin-top:4px;">
+            <span style="font-size:9px;color:var(--muted);">ゆっくり</span>
+            <span style="font-size:9px;color:var(--muted);">速い</span>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="control-label" style="margin-bottom:7px;">ピッチ <span id="pitchVal">普通</span></div>
+          <input type="range" class="slider" id="pitchSlider" min="-10" max="10" value="0" step="1">
+          <div style="display:flex;justify-content:space-between;margin-top:4px;">
+            <span style="font-size:9px;color:var(--muted);">低い</span>
+            <span style="font-size:9px;color:var(--muted);">高い</span>
+          </div>
+        </div>
+
+        <!-- 声色ガイド -->
+        <div style="margin-top:14px; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1); border-radius:2px;">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">📖 プロンプトの書き方</div>
+          <div style="font-size:10px;color:var(--muted2);line-height:1.8;" id="voiceGuideText">
+            <strong style="color:var(--white);">女性・柔らか</strong><br>
+            「優しく、ゆっくりとした口調で」<br>
+            「柔らかい女性の声で語りかけるように」
+          </div>
+        </div>
+      </div>
+
       <div style="margin-top: 12px;">
         <div class="control-label" style="margin-bottom: 7px;">音量バランス <span id="volumeVal">70%</span></div>
         <input type="range" class="slider" id="volumeSlider" min="0" max="100" value="70" step="5">
@@ -932,6 +992,9 @@ const state = {
   motion: 50,
   resolution: '720p',
   audioOptions: { bgm: true, sfx: true, voice: false },
+  voiceTone: 'female_soft',
+  speechRate: 1.0,
+  pitch: 0,
   volume: 70,
   isGenerating: false,
   currentPredictionId: null,
@@ -1028,13 +1091,81 @@ document.getElementById('volumeSlider').addEventListener('input', e => {
   document.getElementById('volumeVal').textContent = state.volume + '%';
 });
 
+// Voice tone guides
+const VOICE_GUIDES = {
+  female_soft: { label: "女性・柔らか", tips: "「優しく、ゆっくりとした口調で」
+「柔らかい女性の声で語りかけるように」" },
+  female_cool: { label: "女性・クール", tips: "「冷静で落ち着いた女性の声で」
+「プロフェッショナルに、感情を抑えて」" },
+  male_warm:   { label: "男性・温かい", tips: "「温かみのある低めの男性の声で」
+「親しみやすく、安心感のある語りかけ」" },
+  male_deep:   { label: "男性・低音",   tips: "「重厚で深みのある低い声で」
+「ナレーション調で、格調高く」" },
+  child:       { label: "子供っぽい",   tips: "「明るく元気な子供の声で」
+「無邪気に、はしゃいだ雰囲気で」" },
+  elderly:     { label: "年配・落ち着き", tips: "「穏やかで落ち着いた年配の声で」
+「ゆっくりと、経験豊かな語り口で」" },
+  energetic:   { label: "元気・活発",   tips: "「テンション高め、元気よく」
+「アナウンサーのようにはきはきと」" },
+  whisper:     { label: "ささやき声",   tips: "「静かに、ささやくように語って」
+「秘密を打ち明けるような親密な声で」" },
+};
+
 document.getElementById('audioOptions').addEventListener('click', e => {
   const opt = e.target.closest('.audio-option');
   if (!opt) return;
   const key = opt.dataset.audio;
   state.audioOptions[key] = !state.audioOptions[key];
   opt.classList.toggle('active', state.audioOptions[key]);
+  
+  // ナレーションON/OFFで声色パネル表示切替
+  if (key === 'voice') {
+    const voicePanel = document.getElementById('voiceSettings');
+    if (voicePanel) voicePanel.style.display = state.audioOptions.voice ? 'block' : 'none';
+  }
 });
+
+// 声色グリッドのクリック
+const voiceToneGrid = document.getElementById('voiceToneGrid');
+if (voiceToneGrid) {
+  voiceToneGrid.addEventListener('click', e => {
+    const chip = e.target.closest('.style-chip');
+    if (!chip) return;
+    voiceToneGrid.querySelectorAll('.style-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.voiceTone = chip.dataset.tone;
+    
+    // ガイドテキスト更新
+    const guide = VOICE_GUIDES[state.voiceTone];
+    if (guide) {
+      document.getElementById('voiceGuideText').innerHTML =
+        `<strong style="color:var(--white);">${guide.label}</strong><br>${guide.tips.replace(/
+/g, '<br>')}`;
+    }
+  });
+}
+
+// 話す速さスライダー
+const speechRateSlider = document.getElementById('speechRateSlider');
+if (speechRateSlider) {
+  speechRateSlider.addEventListener('input', e => {
+    const v = parseFloat(e.target.value);
+    state.speechRate = v;
+    const label = v < 0.8 ? 'ゆっくり' : v > 1.3 ? '速い' : '普通';
+    document.getElementById('speechRateVal').textContent = label;
+  });
+}
+
+// ピッチスライダー
+const pitchSlider = document.getElementById('pitchSlider');
+if (pitchSlider) {
+  pitchSlider.addEventListener('input', e => {
+    const v = parseInt(e.target.value);
+    state.pitch = v;
+    const label = v < -3 ? '低い' : v > 3 ? '高い' : '普通';
+    document.getElementById('pitchVal').textContent = label;
+  });
+}
 
 // ============================
 // GENERATION
@@ -1071,6 +1202,9 @@ async function startGeneration() {
         bgm: state.audioOptions.bgm,
         sfx: state.audioOptions.sfx,
         voice: state.audioOptions.voice,
+        voice_tone: state.voiceTone,
+        speech_rate: state.speechRate,
+        pitch: state.pitch,
         volume: state.volume / 100
       }
     };
