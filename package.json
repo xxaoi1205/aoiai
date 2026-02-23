@@ -1,0 +1,13 @@
+{
+  "name": "nitro-ai-video",
+  "version": "1.0.0",
+  "description": "NITRO - AI Video Generation Platform",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
